@@ -14,7 +14,7 @@ namespace Shounds.IObj
         public event Action<IObjUiEnable> OnButtonSelected;                   // This event is triggered when the selection of the button has finished.
 
 
-        [SerializeField] private GameObject m_UiShow;                      // The name of the scene to load.
+        [SerializeField] private string m_SceneToLoad;                      // The name of the scene to load.
         [SerializeField] private VRCameraFade m_CameraFade;                 // This fades the scene out when a new scene is about to be loaded.
         [SerializeField] private SelectionRadial m_SelectionRadial;         // This controls when the selection is complete.
         [SerializeField] private VRInteractiveItem m_InteractiveItem;       // The interactive item for where the user should click to load the level.
