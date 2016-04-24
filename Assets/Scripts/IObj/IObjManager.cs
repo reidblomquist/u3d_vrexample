@@ -26,8 +26,8 @@ namespace Shounds.IObj
 
             // In order, fade in the UI on how to use sliders, wait for the slider to be filled then fade out the UI.
             //yield return StartCoroutine (m_IObjUIFader.InteruptAndFadeIn ());
-            //yield return StartCoroutine (m_IObjUISlider.WaitForBarToFill ());
-            yield return null;
+            yield return StartCoroutine (m_IObjUISlider.WaitForBarToFill ());
+            Debug.Log("IObj Mode Toggle on target: " + m_IObjTarget.name);
             // Coroutine for Movement goes here
             //yield return StartCoroutine (m_IObjUIFader.InteruptAndFadeIn ());
 
