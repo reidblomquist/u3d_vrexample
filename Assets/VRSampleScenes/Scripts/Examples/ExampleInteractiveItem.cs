@@ -14,7 +14,6 @@ namespace VRStandardAssets.Examples
         [SerializeField] private VRInteractiveItem m_InteractiveItem;
         [SerializeField] private Renderer m_Renderer;
 
-
         private void Awake ()
         {
             m_Renderer.material = m_NormalMaterial;
@@ -58,6 +57,14 @@ namespace VRStandardAssets.Examples
         //Handle the Click event
         private void HandleClick()
         {
+			if (transform.parent == null) {
+				transform.parent = Camera.main.transform;
+				transform.parent.GetComponent<SoundShapeManager> ().currentShape = transform;
+			} else {
+				transform.parent = null;
+				transform.parent.GetComponent<SoundShapeManager> ().currentShape = null;
+			}
+
             Debug.Log("Show click state");
             m_Renderer.material = m_ClickedMaterial;
         }

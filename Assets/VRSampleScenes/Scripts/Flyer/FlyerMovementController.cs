@@ -26,6 +26,7 @@ namespace VRStandardAssets.Flyer
         private Vector3 m_TargetMarkerStartPos;
         private Quaternion m_TargetMarkerStartRot;
         private Vector3 m_CameraContainerStartPos;
+		private Vector3 m_MousePosition;
 
 
         private const float k_ExpDampingCoef = -20f;                // The coefficient used to damp the movement of the flyer.
@@ -72,13 +73,20 @@ namespace VRStandardAssets.Flyer
             while (m_IsGameRunning)
             {
                 // Set the target marker position to a point forward of the camera multiplied by the distance from the camera.
+				#if !UNITY_EDITOR
                 Quaternion headRotation = InputTracking.GetLocalRotation (VRNode.Head);
+				#else
+				Quaternion headRotation = m_Camera.rotation;
+				#endif
                 m_TargetMarker.position = m_Camera.position + (headRotation * Vector3.forward) * m_DistanceFromCamera;
+				//m_MousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+				//m_MousePosition = m_MousePosition * Vector3.forward;
+				//m_TargetMarker.position = m_Camera.position + m_MousePosition * m_DistanceFromCamera;
 
                 // Move the camera container forward.
                 m_CameraContainer.Translate (Vector3.forward * Time.deltaTime * m_Speed);
 
-                // Move the flyer towards the target marker.
+                // Move the flyer towards the target marker..
                 m_Flyer.position = Vector3.Lerp(m_Flyer.position, m_TargetMarker.position,
                     m_Damping * (1f - Mathf.Exp (k_ExpDampingCoef * Time.deltaTime)));
 

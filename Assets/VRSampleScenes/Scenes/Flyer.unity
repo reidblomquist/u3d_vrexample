@@ -181,6 +181,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: -1915606183
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -5445,6 +5446,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495536651}
   m_RootOrder: 0
+--- !u!1 &1629684947 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104168, guid: ccf8c8cc05aad7b40a8deb4f73296da4, type: 2}
+  m_PrefabInternal: {fileID: 1061909215}
+--- !u!114 &1629684956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1629684947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ea9ae866b9180419cdca47c54239d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
+  frameCounter: 20
+  toggleKey: 122
+  mouseLook: 1
 --- !u!114 &1640088648 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11473236, guid: 75086b8ed2a24aa459081f9955628655,
@@ -8989,7 +9015,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22442236, guid: 863a0315eb7aa5349ba3dd88bfdbc120, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22422862, guid: 863a0315eb7aa5349ba3dd88bfdbc120, type: 2}
       propertyPath: m_LocalScale.x
