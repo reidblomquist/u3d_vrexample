@@ -14,7 +14,7 @@ namespace Shounds.IObj
         public event Action<IObjUiEnable> OnButtonSelected;                   // This event is triggered when the selection of the button has finished.
 
 
-        [SerializeField] private IObj m_IObjMoveTarget;                      // IObj movement target.
+        [SerializeField] private IObjUIFader m_IObjUIFader;                      // IObj UI target.
         [SerializeField] private VRCameraFade m_CameraFade;                 // This fades the scene out when a new scene is about to be loaded.
         [SerializeField] private SelectionRadial m_SelectionRadial;         // This controls when the selection is complete.
         [SerializeField] private VRInteractiveItem m_InteractiveItem;       // The interactive item for where the user should click to load the level.
@@ -61,18 +61,20 @@ namespace Shounds.IObj
         {
             // If the user is looking at the rendering of the scene when the radial's selection finishes, activate the button.
             if(m_GazeOver)
-                StartCoroutine (ActivateIObj());
+                StartCoroutine (ActivateIObjUI());
         }
 
 
-        private IEnumerator ActivateIObj()
+        private IEnumerator ActivateIObjUI()
         {
             // If the camera is already fading, ignore.
-            if (m_CameraFade.IsFading)
-                yield break;
+            /*if (m_CameraFade.IsFading)
+                yield break;*/
 
             // We need to start the move coroutine here...
-            Debug.Log("Start IObj Movement Coroutine on target: " + m_IObjMoveTarget.name);
+            m_IObjUIFader.transform.GetChild(0).GetComponent<Collider>().enabled = true;
+            yield return StartCoroutine (m_IObjUIFader.InteruptAndFadeIn ());
+
             /*
             // If anything is subscribed to the OnButtonSelected event, call it.
             if (OnButtonSelected != null)
